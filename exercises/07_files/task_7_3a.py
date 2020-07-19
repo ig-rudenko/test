@@ -23,3 +23,14 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+with open("CAM_table.txt", "r") as cam:
+    list, file = [], []
+    for line in cam:
+        file.append(line)
+        list.append(int(line.split()[0])) if '.' in line else ''
+    for num in sorted(list):
+        for line in file:
+            if str(num)+' ' in line:
+                print(line.strip().replace("   DYNAMIC", ""))
+                file.remove(line)
+

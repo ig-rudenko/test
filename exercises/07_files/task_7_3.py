@@ -17,3 +17,8 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+with open("CAM_table.txt", "r") as cam:
+    for line in cam:
+        if '.' in line:
+            print(f" {'{:7}'.format(line.split()[0])} {line.split()[1]}   {line.split()[3]}")
+
