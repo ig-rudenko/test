@@ -17,3 +17,26 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+ip = input("Введите IP-адрес в формате 10.0.1.1: ")
+
+if len(ip.split('.')) == 4:
+    for octet in ip.split('.'):
+        if octet.isdigit() and 256 > int(octet) >= 0:
+            pass
+        else:
+            print("Неправильный IP-адрес")
+            break
+    else:
+        if int(ip.split('.')[0]) <= 223:
+            print('unicast')
+        elif int(ip.split('.')[0]) <= 239:
+            print('multicast')
+        elif ip == '255.255.255.255':
+            print('local broadcast')
+        elif ip == '0.0.0.0':
+            print('unassigned')
+        else:
+            print('unused')
+else:
+    print("Неправильный IP-адрес")
+
