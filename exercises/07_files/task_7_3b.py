@@ -11,3 +11,9 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+with open("CAM_table.txt", "r") as cam:
+    num = input("Введите номер VLAN'a: ")
+    for line in cam:
+        if num+' ' in line:
+            print(line.strip().replace("   DYNAMIC", ""))
+
