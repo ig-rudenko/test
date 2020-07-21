@@ -10,3 +10,7 @@
 """
 
 mac = "AAAA:BBBB:CCCC"
+print(str(bin(int(mac[:2], 16)))[2:]+str(bin(int(mac[2:4], 16)))[2:]+
+      str(bin(int(mac[5:7], 16)))[2:]+str(bin(int(mac[7:9], 16)))[2:]+
+      str(bin(int(mac[10:12], 16)))[2:]+str(bin(int(mac[12:], 16)))[2:])
+
