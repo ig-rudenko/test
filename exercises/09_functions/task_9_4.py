@@ -35,3 +35,29 @@ def ignore_command(command, ignore):
     * False - если нет
     """
     return any(word in command for word in ignore)
+
+def convert_config_to_dict(config_filename):
+    with open(config_filename, 'r') as conf:
+        config = {}
+        key = ''
+        values = []
+        for line in conf:
+            if not ignore_command(line, ignore) and not "!" in line:
+                if not line.startswith(' '):            # Если находим ключ, то...
+                    if key:                                 # Если ключ уже был, то...
+                        config[key] = values                    # ...записываем старый ключ
+                        values, key = [], ''                    # очищаем значения key и value.
+                    key = line.strip()                      # ...указываем ключ
+                    print("key: "+key.strip())              # выводим ключ.
+                elif key:                               # Иначе, Если ключ найден, то...
+                    if not values:                          # Если это первое значение, то...
+                        values = [line.strip()]                 # ...создаем список из одного элемента.
+                        print('первый: ')
+                    else:                                   # Иначе...
+                        values = values.append(line.strip())    # ...добавляем значение в список.
+                    print(values)
+                    print("value: "+line.strip())
+        print(config)
+
+convert_config_to_dict("config_sw1.txt")
+
