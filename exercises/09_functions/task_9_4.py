@@ -36,6 +36,7 @@ def ignore_command(command, ignore):
     """
     return any(word in command for word in ignore)
 
+
 def convert_config_to_dict(config_filename):
     with open(config_filename, 'r') as conf:
         config = {}
@@ -46,7 +47,8 @@ def convert_config_to_dict(config_filename):
                 if not line.startswith(' '):            # Если находим ключ, то...
                     if key:                                 # Если ключ уже был, то...
                         config[key] = values                    # ...записываем старый ключ
-                        values, key = [], ''                    # очищаем значения key и value.
+                        values = []
+                        key = ''                                # очищаем значения key и value.
                     key = line.strip()                      # ...указываем ключ
                     print("key: "+key.strip())              # выводим ключ.
                 elif key:                               # Иначе, Если ключ найден, то...
@@ -54,10 +56,14 @@ def convert_config_to_dict(config_filename):
                         values = [line.strip()]                 # ...создаем список из одного элемента.
                         print('первый: ')
                     else:                                   # Иначе...
-                        values = values.append(line.strip())    # ...добавляем значение в список.
+                        values.append(line.strip())             # ...добавляем значение в список.
                     print(values)
                     print("value: "+line.strip())
+        else:
+            config[key] = values                            # Записываем последнее значение
         print(config)
+        return config
+
 
 convert_config_to_dict("config_sw1.txt")
 
