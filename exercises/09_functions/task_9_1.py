@@ -77,5 +77,9 @@ def generate_access_config(intf_vlan_mapping, access_template):
             result.append(f"{line.strip()} {intf_vlan_mapping[intf]}") if "vlan" in line else result.append(line.strip())
     print(result)
     return result
+
+
 generate_access_config(access_config, access_mode_template)
+
+
 

@@ -23,6 +23,8 @@
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
+
+
 def get_int_vlan_map(config_filename):
     with open(config_filename, 'r') as config:
         access = {}
@@ -45,4 +47,7 @@ def get_int_vlan_map(config_filename):
     result = (access, trunk)
     print(result)
     return result
+
+
 get_int_vlan_map('config_sw2.txt')
+

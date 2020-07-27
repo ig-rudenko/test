@@ -21,6 +21,8 @@
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
+
+
 def get_int_vlan_map(config_filename):
     with open(config_filename, 'r') as config:
         access = {}
@@ -36,5 +38,7 @@ def get_int_vlan_map(config_filename):
                 trunk[interface] = [int(num) for num in trunk_vlans.split(',')]
     print(access, trunk)
     return access, trunk
+
+
 get_int_vlan_map('config_sw1.txt')
 
